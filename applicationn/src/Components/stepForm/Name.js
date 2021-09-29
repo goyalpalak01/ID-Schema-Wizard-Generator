@@ -50,29 +50,8 @@ export const Name = ({formData,setForm,navigation}) => {
             autoComplete = "off"
             fullWidth
             
-            />
-            <TextField
-            label = "LastName"
-            name ="lastName"
-            value = {lastName}
-            onChange = {setForm}
-            margin = "normal"
-            variant = "outlined"
-            autoComplete = "off"
-            fullWidth
+            />*/}
             
-            />
-            <TextField
-            label = "NickName"
-            name ="nickName"
-            value = {nickName}
-            onChange = {setForm}
-            margin = "normal"
-            variant = "outlined"
-            autoComplete = "off"
-            fullWidth
-            
-            />  */}
             <Button variant = "contained" fullWidth color = "primary" style = {{marginTop :'1rem'}}
             onClick = {()=>navigation.next()}>Next</Button>
         </Container>
