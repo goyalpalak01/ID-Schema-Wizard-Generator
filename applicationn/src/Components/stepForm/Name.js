@@ -1,64 +1,61 @@
 import React from 'react'
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+// import { makeStyles } from '@material-ui/core/styles';
+import Box from "@material-ui/core/Box";
+import AddValidation from "./AddValidation";
 
-import { FormControlLabel, MuiThemeProvider, RadioGroup } from '@material-ui/core';
-import { Radio } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
 
-
-
-export const Name = ({formData,setForm,navigation}) => {
-    const useStyles = makeStyles({
-        root :{
-            backgroundColor:"blue"
-        },
-        headingStyle :{
-            fontFamily:"Roboto",
-            fontSize:"50px"
-            
-        },
-        questionStyle :{
-    
-        }
-    });
-    
-    const classes =useStyles();
-    let {fullName} = formData;
-    let setCategory = (value)=>{
-        fullName = value;
-        console.log(fullName);
-        } ; 
-    return (
+class Name extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {attid:"fullName",
+                    valid_name:"false" };
+        this.handleInputChange = this.handleInputChange.bind(this);
+      }
+      
+      handleInputChange(event) {
         
-        <Container maxWidth = {false} > 
-            <p className = {classes.headingStyle}>Mosip ID Schema Form</p>
-            <h2>How would you like to take the complete name ?</h2>
-            <RadioGroup onChange = {(e)=>setCategory(e.target.value)}>
-                <FormControlLabel value = "Full Name" control = {<Radio/>} label = "Full Name"/>
-                <FormControlLabel value = "First Name and Last Name" control = {<Radio/>} label = "First Name and Last Name"/>
-                <FormControlLabel value = "First Name,Middle Name and Last Name" control = {<Radio/>} label = "First Name,Middle Name and Last Name"/>
+        this.setState({
+          [event.target.name]: event.target.value
+        });
+      }
+    render(){
+        return(
+            <Container maxWidth="md" >
+            
+                <h2>Full Name</h2>
+                <Box borderColor="primary.main" 
+                     borderTop={5} 
+                     >
+                    <div><br/></div>
+                    <div>
+                       
+                        <TextField required id="outlined-required" label="Attribute ID" 
+                        variant="outlined" value={this.state.attid} name="attid"
+                        onChange={this.handleInputChange}
+                        />
+                    </div>
+                    <div>
+                    <FormLabel>Do you want to put validation on Full Name?</FormLabel>
+                    <RadioGroup row name="valid_name" value={this.state.valid_name} onChange={this.handleInputChange}>
+                        <FormControlLabel value="false" control={<Radio />} label="No" />
+                        <FormControlLabel value="true" control={<Radio />} label="Yes" />
+                    </RadioGroup>
+                    </div>
+                    
+                    <AddValidation attr_name="fullname" validation_required={this.state.valid_name}/>
+                </Box>
+            </Container>
+           
+            
+        );
 
-                
-            </RadioGroup>
-            {/* <h3>How would you like to take the name?</h3>
-             <TextField
-            label = "FirstName"
-            name ="firstName"
-            value = {firstName}
-            onChange= {setForm}
-            margin = "normal"
-            variant = "outlined"
-            autoComplete = "off"
-            fullWidth
-            
-            />*/}
-            
-            <Button variant = "contained" color = "primary" style = {{marginTop :'1rem'}}
-            onClick = {()=>navigation.next()}>Next</Button>
-        </Container>
-        
-    )
+    }
 }
+export default Name;

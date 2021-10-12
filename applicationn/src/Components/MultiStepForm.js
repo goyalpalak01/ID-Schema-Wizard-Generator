@@ -1,7 +1,7 @@
 import { Step } from 'material-ui';
 import React from 'react'
 import {useForm ,useStep} from 'react-hooks-helper';
-import {Name} from './stepForm/Name';
+import Name from './stepForm/Name';
 import {Country} from './stepForm/Country';
 import {Gender} from './stepForm/Gender';
 import {Contact} from './stepForm/Contact';
