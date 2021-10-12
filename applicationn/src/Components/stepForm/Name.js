@@ -3,35 +3,39 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import { FormControlLabel, RadioGroup } from '@material-ui/core';
+import { FormControlLabel, MuiThemeProvider, RadioGroup } from '@material-ui/core';
 import { Radio } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { red } from '@material-ui/core/colors';
+
+
 
 export const Name = ({formData,setForm,navigation}) => {
     const useStyles = makeStyles({
+        root :{
+            backgroundColor:"blue"
+        },
         headingStyle :{
+            fontFamily:"Roboto",
+            fontSize:"50px"
             
         },
         questionStyle :{
-            
+    
         }
     });
     
-    const classes =useStyles()
-    console.log(classes);
-    
+    const classes =useStyles();
     let {fullName} = formData;
-    
-
-    
     let setCategory = (value)=>{
         fullName = value;
         console.log(fullName);
-        }   
+        } ; 
     return (
-        <Container maxWidth = {false}> 
-            <h1>Mosip ID Schema Form</h1>
-            <h1 >How would you like to take the complete name ?</h1>
+        
+        <Container maxWidth = {false} > 
+            <p className = {classes.headingStyle}>Mosip ID Schema Form</p>
+            <h2>How would you like to take the complete name ?</h2>
             <RadioGroup onChange = {(e)=>setCategory(e.target.value)}>
                 <FormControlLabel value = "Full Name" control = {<Radio/>} label = "Full Name"/>
                 <FormControlLabel value = "First Name and Last Name" control = {<Radio/>} label = "First Name and Last Name"/>
@@ -52,8 +56,9 @@ export const Name = ({formData,setForm,navigation}) => {
             
             />*/}
             
-            <Button variant = "contained" fullWidth color = "primary" style = {{marginTop :'1rem'}}
+            <Button variant = "contained" color = "primary" style = {{marginTop :'1rem'}}
             onClick = {()=>navigation.next()}>Next</Button>
         </Container>
+        
     )
 }

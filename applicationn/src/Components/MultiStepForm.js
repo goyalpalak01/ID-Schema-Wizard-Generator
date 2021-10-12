@@ -2,23 +2,27 @@ import { Step } from 'material-ui';
 import React from 'react'
 import {useForm ,useStep} from 'react-hooks-helper';
 import {Name} from './stepForm/Name';
+import {Country} from './stepForm/Country';
 import {Gender} from './stepForm/Gender';
 import {Contact} from './stepForm/Contact';
 import {Review} from './stepForm/Review';
 import {Submit} from './stepForm/Submit';
+import Salutation from './stepForm/Salutation'
 
 
 const defaultData = {
     fullName:'Full Name',
     gender : [],
-    phone:'',
-    email:''
+    salutation:'Maybe',
+    typesOfSalutation:[],
+    country : ''
 };
 
 const steps = [
     {id:'names'},
+    {id:'country'},
     {id:'gender'},
-    {id:'contact'},
+    {id:'salutation'},
     {id:'review'},
     {id:'submit'},
 ]
@@ -31,13 +35,14 @@ export const MultiStepForm = () => {
 
     const props = {formData,setForm,navigation};
     switch(step.id)
-    {
+    {   case 'country':
+            return <Country {...props}/>
         case 'names':
             return <Name {...props } />;
         case 'gender':
             return <Gender {...props }/>;
-        case 'contact':
-            return <Contact {...props }/>;
+        case 'salutation':
+            return <Salutation {...props }/>;
         case 'review':
             return <Review {...props }/>;
         case 'submit':
@@ -49,5 +54,6 @@ export const MultiStepForm = () => {
         <div>
             
         </div>
+        
     )
 }
