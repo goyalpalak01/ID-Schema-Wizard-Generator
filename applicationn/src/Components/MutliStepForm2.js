@@ -35,7 +35,7 @@ updateIterator = () =>{
     curr_iter++;
     this.setState({
         stepIterator:curr_iter,
-        curr_id:this.state.step[curr_iter][0]
+        curr_id:this.state.steps[curr_iter][0]
     })
 }
 
@@ -92,7 +92,8 @@ render()
                 case 13:
                      return <IndividualBiometrics updateIterator = {this.updateIterator} updateObject = {this.updateObject}
                      name = {this.state.steps[this.state.stepIterator][1]}/>
-                default: return <AdditionalAttribute updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                default:
+                     return <AdditionalAttribute updateIterator = {this.updateIterator} updateObject = {this.updateObject}
                 name = {this.state.steps[this.state.stepIterator][1]}/>
             }
     }

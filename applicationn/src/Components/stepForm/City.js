@@ -1,15 +1,23 @@
 import React from "react"
+import Button from "@material-ui/core/Button"
+import {Container} from "@material-ui/core"
 class City extends React.Component
 {
     constructor(props)
     {
         super(props);
     }
-
+    nextPageHandler = (event)=>{
+        this.props.updateIterator();
+      }
     render()
-    {
+    {   
         return (
-            <h2>City</h2>
+            <Container>
+              <h2>City</h2>
+              <Button variant = "contained" label = "Next" color = "primary"
+                    onClick = {(event)=>this.nextPageHandler(event)}>Next</Button>
+            </Container>
         )
     }
 }

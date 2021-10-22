@@ -6,6 +6,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import Button from "@material-ui/core/Button"
 // import { makeStyles } from '@material-ui/core/styles';
 import Box from "@material-ui/core/Box";
 import AddValidation from "./AddValidation";
@@ -24,6 +25,10 @@ class Name extends React.Component{
         this.setState({
           [event.target.name]: event.target.value
         });
+      }
+
+      nextPageHandler = (event)=>{
+        this.props.updateIterator();
       }
     render(){
         return(
@@ -51,6 +56,8 @@ class Name extends React.Component{
                     
                     <AddValidation attr_name="fullname" validation_required={this.state.valid_name}/>
                 </Box>
+                <Button variant = "contained" label = "Next" color = "primary"
+                 onClick = {(event)=>this.nextPageHandler(event)}>Next</Button>
             </Container>
            
             
