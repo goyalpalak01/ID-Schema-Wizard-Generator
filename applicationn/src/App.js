@@ -1,9 +1,8 @@
 import {MultiStepForm} from './Components/MultiStepForm'
-import { makeStyles } from '@material-ui/core/styles';
 import Index from "./Components/Index";
 import React from "react"
-import {Name} from './Components/stepForm/Name'
-import { render } from '@testing-library/react';
+import MultiStepForm2 from './Components/MutliStepForm2'
+
 
 class App extends React.Component {
   constructor()
@@ -11,33 +10,35 @@ class App extends React.Component {
     super();
     this.state = {
       steps:[],
-      additionalSteps:false,
       firstPage:true
     }
   }
   
-   getFormSteps = (data)=>{
+   getFormSteps = (final_attributes)=>{
+      final_attributes.sort(function(a,b){
+        return (a[0]<b[0]?-1:1);
+      });
       
     this.setState({
-      steps:data.final_attributes,
-      additionalSteps:data.final_additionalAttributes,
+      steps:final_attributes,
+      
       firstPage:false
     });
 
   }
   render()
-  {
+  { console.log(this.state.steps);
     const props = {
         steps : this.state.steps.splice(),
-        additionalSteps : this.state.additionalSteps
+        
     }
     console.log(this.state);
   return (
     
     <div className="App">
-        {/* <MultiStepForm/>  */}
-        {this.state.firstPage && <Index  getSteps = {this.getFormSteps}/>}
-        {!this.state.firstPage && <MultiStepForm props = {props}/>}
+        
+        { this.state.firstPage && <Index  getSteps = {this.getFormSteps}/>}
+        {!this.state.firstPage && <MultiStepForm2 steps = {this.state.steps}/>}
       
     </div>
   );

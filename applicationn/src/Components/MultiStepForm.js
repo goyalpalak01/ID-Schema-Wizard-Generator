@@ -4,7 +4,7 @@ import {useForm ,useStep} from 'react-hooks-helper';
 import Name from './stepForm/Name';
 import {Country} from './stepForm/Country';
 import {Gender} from './stepForm/Gender';
-import {Contact} from './stepForm/Contact';
+
 import {Review} from './stepForm/Review';
 import {Submit} from './stepForm/Submit';
 import Salutation from './stepForm/Salutation'
@@ -33,10 +33,11 @@ export const MultiStepForm = () => {
         initialStep:0
     });
 
+    
     const props = {formData,setForm,navigation};
     switch(step.id)
     {   case 'country':
-            return <Country {...props}/>
+            return <Country {...props} />
         case 'names':
             return <Name {...props } />;
         case 'gender':

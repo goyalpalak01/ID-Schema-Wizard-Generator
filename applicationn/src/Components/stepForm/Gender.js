@@ -2,7 +2,7 @@ import React from 'react'
 import Container from '@material-ui/core/Container';
 
 import Button from '@material-ui/core/Button';
-import NavigationApps from 'material-ui/svg-icons/navigation/apps';
+
 import { Checkbox } from '@material-ui/core';
 
 import { FormControlLabel } from '@material-ui/core';
