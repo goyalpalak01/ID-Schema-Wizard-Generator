@@ -7,8 +7,9 @@ import Button from "@material-ui/core/Button";
 import { Checkbox } from '@material-ui/core';
 import {FormControlLabel} from "@material-ui/core"
 import TextField from '@material-ui/core/TextField';
-
-
+import Box from "@material-ui/core/Box";
+import Tooltip from '@material-ui/core/Tooltip';
+import Divider from '@material-ui/core/Divider';
 
 class Index extends React.Component{
     constructor()
@@ -127,7 +128,8 @@ class Index extends React.Component{
         let initial_final_attributes = this.state.final_attributes.slice();
         initial_final_attributes.push(new_attribute);
         this.setState({
-            final_attributes:initial_final_attributes
+            final_attributes:initial_final_attributes,
+            attributeName:''
         })
 
     }
@@ -140,46 +142,76 @@ class Index extends React.Component{
     render()
     {   
         let  initial_list =this.state.initial_attributes.map((attribute)=>{
-                    return <ListItem button selected = {this.state.selected_element_to_insert === attribute[0]}
+                    return(
+                    <div>
+                    <ListItem button selected = {this.state.selected_element_to_insert === attribute[0]}
                      onClick = {(event)=>this.handleSelectElement(event,attribute[0])}><ListItemText primary = {attribute[1]}/>
                      </ListItem>
+                     <Divider />
+                     </div>)
             })
             let final_list = this.state.final_attributes.map((attribute)=>{
-                    return <ListItem button selected = {this.state.selected_element_to_delete===attribute[0]}
+                    return (
+                    <div>
+                    <ListItem button selected = {this.state.selected_element_to_delete===attribute[0]}
                      onClick = {(event)=>this.handleDeselectElement(event,attribute[0])}><ListItemText primary = {attribute[1]}/>
                      </ListItem>
+                     <Divider />
+                     </div>
+                    )
             }) 
          return (
-             <Container maxWidth = {false}>
-                 <h1>Choose the attributes for the form </h1>
+             <Container maxWidth ="md">
+                 <h2>Choose the attributes for the form </h2>
+                 <Box borderColor="primary.main" 
+                     borderTop={5} 
+                     
+                     >
+                    <div><br/></div>
             <div style = {{display:"flex"}}>
                 <div style = {{display:"flex",flexDirection:"column"}}>
-                    <h2>Stock Attributes</h2>
+                    <h3>Available Attributes</h3>
+                    <Box border={2} borderColor="black">
                     <List style ={{width:"100%",maxHeight:"250px",overflow:"auto"}}>
                     
                         {initial_list}
                 
                     </List>
+                    </Box>
                 </div>
-                <div style ={{width:"34%",alignItems:"center",display:"flex",flexDirection:"column"}}>
+                <div style ={{width:"30%",alignItems:"center",display:"flex",flexDirection:"column", marginTop:"50px"}}>
+                <Tooltip title="Select" arrow>
                         <Button color = "primary" variant = "contained" value = "Select"
-                         onClick = {(event)=>this.handleInsertElement(event)} style = {{margin:"1rem"}}>Select</Button>
+                         onClick = {(event)=>this.handleInsertElement(event)} style = {{margin:"1rem"}}> &gt;
+                         </Button>
+                </Tooltip>
+                <Tooltip title="Remove" arrow>
                          <Button color = "secondary" variant = "contained" value = "Remove"
-                         onClick = {(event)=>this.handleDeleteElement(event)} style = {{margin:"1rem"}}>Remove</Button>
+                         onClick = {(event)=>this.handleDeleteElement(event)} style = {{margin:"1rem"}}> &lt;
+                        </Button>
+                </Tooltip>
+                <Tooltip title="Select All" arrow>
                          <Button color = "primary" variant = "contained" value = "Select All"
-                         onClick = {(event)=>this.handleInsertAllElement(event)} style = {{margin:"1rem"}}>Select All</Button>
+                         onClick = {(event)=>this.handleInsertAllElement(event)} style = {{margin:"1rem"}}> &gt;&gt;
+                         </Button>
+                </Tooltip>
+                <Tooltip title="Remove All" arrow>
                          <Button color = "secondary" variant = "contained" value = "Remove All"
-                         onClick = {(event)=>this.handleDeleteAllElement(event)} style = {{margin:"1rem"}}>Remove All</Button>
+                         onClick = {(event)=>this.handleDeleteAllElement(event)} style = {{margin:"1rem"}}> &lt;&lt;
+                        </Button>
+                </Tooltip>
 
                     
                     
                 </div>
                 <div style = {{display:"flex",flexDirection:"column"}}>
-                    <h2>Final Attributes</h2>
+                    <h3>Selected Attributes</h3>
+                    <Box border={2} borderColor="black">
                     <List style = {{maxHeight:"250px",overflow:"auto"}}>
                         
                         {final_list}
                     </List>
+                    </Box>
                 </div>
             </div>
             <div>
@@ -190,15 +222,21 @@ class Index extends React.Component{
                     <TextField id = "attribute_name" label = "Attribute Name" variant = "outlined"
                      value = {this.state.attributeName} onChange = {(event)=>this.changeAttributeName(event)} />
                     <Button color = "primary" variant = "contained" value = "Add Attribute" style ={{margin:"1rem"}} onClick = {(event)=>this.addAttributeHandler(event)}>
-                        Add Attribute
+                        Add
                     </Button>
                     
                 </div>
             }
-            <div style ={{margin:"1rem",display:"flex",flexDirection:"column",width:"25%"}} >
+            </div>
+            <div><br/></div>
+            </Box>
+          
+            <div style ={{display:"block",width:"50%"}} >
                 <Button color ="primary"  variant = "contained" onClick = {(event)=>this.getNextPage(event)}>Next</Button>
             </div>
-            </div>
+            
+            
+            
             </Container>
         )
     }

@@ -61,11 +61,11 @@ class Salutation extends Component{
 
             }
             {
-                this.state.buttonClicked===true && this.state.salutation == "Yes" &&<SalutationTypes/>
+                this.state.buttonClicked===true && this.state.salutation === "Yes" &&<SalutationTypes/>
 
             }
             {
-                this.state.buttonClicked===true && this.state.salutation == "No" &&<Review {...props}/>
+                this.state.buttonClicked===true && this.state.salutation === "No" &&<Review {...props}/>
             }
            
             
