@@ -38,6 +38,7 @@ class Name extends React.Component{
                 <h2>Full Name</h2>
                 <Box borderColor="primary.main" 
                      borderTop={5} 
+                     borderBottom={4}
                      >
                     <div><br/></div>
                     <div>
@@ -57,6 +58,7 @@ class Name extends React.Component{
                     
                     <AddValidation attr_name="fullname" validation_required={this.state.valid_name}/>
                 </Box>
+                <div><br/></div>
                 <Button variant = "contained" label = "Next" color = "primary"
                  onClick = {(event)=>this.nextPageHandler(event)}>Next</Button>
             </Container>
