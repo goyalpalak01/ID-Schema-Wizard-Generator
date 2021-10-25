@@ -28,6 +28,7 @@ class Name extends React.Component{
       }
 
       nextPageHandler = (event)=>{
+        
         this.props.updateIterator();
       }
     render(){
