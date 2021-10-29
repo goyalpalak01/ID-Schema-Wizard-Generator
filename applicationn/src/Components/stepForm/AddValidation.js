@@ -26,6 +26,7 @@ class AddValidation extends React.Component{
         this.setState({
           [event.target.name]: event.target.value
         });
+        this.props.parentCallback(event.target.value,event.target.name);
       }
       names = [
         '!',
@@ -40,6 +41,7 @@ class AddValidation extends React.Component{
         // if(this.props.attr_name==="fullname" && this.props.validation_required==="true"){
         //     display = <h1>Hi validation is required</h1>;
         // }
+        //console.log(this.state.special_char_arr);
         return(
           
           <div>
