@@ -6,8 +6,8 @@ class DoB extends React.Component{
     {
         super(props);
     }
-    nextPageHandler = (event)=>{
-        this.props.updateIterator();
+    nextPageHandler = (event,flag)=>{
+        this.props.updateIterator(flag);
       }
     render()
     {
@@ -15,8 +15,12 @@ class DoB extends React.Component{
         return (
             <Container>
             <h2>DoB</h2>
-            <Button variant = "contained" label = "Next" color = "primary"
-                    onClick = {(event)=>this.nextPageHandler(event)}>Next</Button>
+            <Button disabled={this.props.curStepIt===0} variant = "contained" label = "Previous" color = "primary"
+                 onClick = {(event)=>this.nextPageHandler(event,0)}>Previous
+            </Button>
+            <Button style = {{marginLeft:"1rem"}} disabled={this.props.curStepIt=== this.props.totSteps-1} variant = "contained" label = "Next" color = "primary"
+                 onClick = {(event)=>this.nextPageHandler(event,1)}>Next
+            </Button>
             </Container>
         )
     }

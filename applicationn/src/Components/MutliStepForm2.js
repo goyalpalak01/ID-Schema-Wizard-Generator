@@ -32,9 +32,11 @@ constructor(props)
     
     
 }
-updateIterator = () =>{
+updateIterator = (flag) =>{
     let curr_iter = this.state.stepIterator;
-    curr_iter++;
+    
+    flag===0?curr_iter--:curr_iter++;
+    
     this.setState({
         stepIterator:curr_iter,
         curr_id:this.state.steps[curr_iter][0]
@@ -54,7 +56,9 @@ render()
             {
                 case 1 :
                      return (
-                     <div style = {{display:"flex",flexDirection:"row"}}>
+
+                     <div style = {{display:"flex",flexDirection:"row",width:"auto"}}>
+                          <div>
                          <Stepper activeStep={this.state.stepIterator} orientation="vertical">
                          {this.state.steps.map((label) => (
                               <Step key={label[1]}>
@@ -62,8 +66,11 @@ render()
                               </Step>
                          ))}
                          </Stepper>
+                         </div>
+                         <div>
                          <Name updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                         name = {this.state.steps[this.state.stepIterator][1]}/>
+                         name = {this.state.steps[this.state.stepIterator][1]} curStepIt={this.state.stepIterator} totSteps={this.state.steps.length}/>
+                    </div>
                     </div>
                      )
                 case 2 :
@@ -77,7 +84,7 @@ render()
                              ))}
                              </Stepper>
                              <DoB updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                             name = {this.state.steps[this.state.stepIterator][1]} curStepIt={this.state.stepIterator} totSteps={this.state.steps.length}/>
                         </div>
                          )
                 case 3:
