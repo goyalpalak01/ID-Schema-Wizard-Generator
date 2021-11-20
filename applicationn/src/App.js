@@ -1,4 +1,4 @@
-import {MultiStepForm} from './Components/MultiStepForm'
+
 import Index from "./Components/Index";
 import React from "react"
 import MultiStepForm2 from './Components/MutliStepForm2'

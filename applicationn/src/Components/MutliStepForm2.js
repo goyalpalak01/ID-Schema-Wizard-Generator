@@ -23,8 +23,15 @@ class MultiStepForm2 extends React.Component{
 constructor(props)
 {
     super(props);
+    let obj =  [];
+    obj.length = this.props.steps.length;
+    for (let i=0; i< obj.length;i++){
+          obj[i] = {};
+    }
+    
     this.state = {
-        finalObject:{},
+        finalObject:obj,
+        formattedObject:[],
         curr_id:this.props.steps[0][0],
         steps:this.props.steps,
         stepIterator:0
@@ -32,23 +39,42 @@ constructor(props)
     
     
 }
-updateIterator = (flag) =>{
+updateNextIterator = () =>{
     let curr_iter = this.state.stepIterator;
     
-    flag===0?curr_iter--:curr_iter++;
+    curr_iter++;
     
     this.setState({
         stepIterator:curr_iter,
         curr_id:this.state.steps[curr_iter][0]
     })
 }
+updatePrevIterator = ()=>{
+     let curr_iter = this.state.stepIterator;
+    
+    curr_iter--;
+    
+    this.setState({
+        stepIterator:curr_iter,
+        curr_id:this.state.steps[curr_iter][0]
+    })
 
-updateObject = (data) =>{
+};
+
+updateObject = (data,id,formattedData) =>{
     console.log(data);
+     let newFinalObject = this.state.finalObject;
+     newFinalObject[id-1] = data;
+     let newFormattedObject = this.state.formattedObject;
+     newFormattedObject.push(formattedData);
+     this.setState({
+          finalObject:newFinalObject,
+          formattedObject:newFormattedObject
+     });
 }
 
 render()
-{   
+{   console.log(this.state.finalObject);
     let id = this.state.curr_id;
     if(this.state.stepIterator<this.state.steps.length)
    { 
@@ -68,8 +94,9 @@ render()
                          </Stepper>
                          </div>
                          <div>
-                         <Name updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                         name = {this.state.steps[this.state.stepIterator][1]} curStepIt={this.state.stepIterator} totSteps={this.state.steps.length}/>
+                         <Name updateNextIterator = {this.updateNextIterator} updateObject = {this.updateObject} data = {this.state.finalObject} updatePrevIterator = {this.updatePrevIterator}
+                         name = {this.state.steps[this.state.stepIterator][1]} curStepIt={this.state.stepIterator} totSteps={this.state.steps.length}
+                          curr_id = {id}/>
                     </div>
                     </div>
                      )
@@ -83,8 +110,9 @@ render()
                                   </Step>
                              ))}
                              </Stepper>
-                             <DoB updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                             name = {this.state.steps[this.state.stepIterator][1]} curStepIt={this.state.stepIterator} totSteps={this.state.steps.length}/>
+                             <DoB updateNextIterator = {this.updateNextIterator} updateObject = {this.updateObject} data = {this.state.finalObject} updatePrevIterator = {this.updatePrevIterator}
+                         name = {this.state.steps[this.state.stepIterator][1]} curStepIt={this.state.stepIterator} totSteps={this.state.steps.length}
+                          curr_id = {id}/>
                         </div>
                          )
                 case 3:

@@ -14,10 +14,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 class AddValidation extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {l_min:3,
-                      l_max:50,
-                      spl_char:"false",
-                    special_char_arr:[]};
+        this.state = {l_min: this.props.minlen,
+                      l_max: this.props.maxlen,
+                      spl_char:this.props.specialchr,
+                    special_char_arr:this.props.splarr};
         this.handleInputChange = this.handleInputChange.bind(this);
         
       }

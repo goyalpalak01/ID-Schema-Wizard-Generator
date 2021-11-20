@@ -15,6 +15,10 @@ import {generateJSON_fullName} from "./GenerateJSON";
 class Name extends React.Component{
     constructor(props) {
         super(props);
+        let id = this.props.curr_id;
+        let data = this.props.data;
+        if(Object.keys(data[id-1]).length ===0)
+        {
         this.state = {attid:"fullName",
                     valid_name:"false",
                     lang:"false",
@@ -23,6 +27,13 @@ class Name extends React.Component{
                     spl_char:"false",
                     special_char_arr:[]
                   };
+        }
+        else
+        {
+          this.state = JSON.parse(JSON.stringify(this.props.data[id-1]));
+
+        }
+        
                   
         this.handleInputChange = this.handleInputChange.bind(this);
       }
@@ -38,11 +49,17 @@ class Name extends React.Component{
         this.setState({[name]: childData});
     }
 
-      nextPageHandler = (event,flag)=>{
+      nextPageHandler = (event)=>{
         var obj = generateJSON_fullName(this.state);
         console.log(obj);
-        this.props.updateIterator(flag);
+
+        this.props.updateObject(this.state,this.props.curr_id,obj);
+        this.props.updateNextIterator();
       }
+      prevPageHandler = (event)=>{
+          this.props.updatePrevIterator();
+      }
+  
     render(){
       // console.log(JSON.stringify(this.state));
         return(
@@ -69,7 +86,9 @@ class Name extends React.Component{
                     </RadioGroup>
                     </div>
                     
-                    <AddValidation attr_name="fullname" validation_required={this.state.valid_name} parentCallback = {this.handleCallback}/>
+                    <AddValidation attr_name="fullname" validation_required={this.state.valid_name} parentCallback = {this.handleCallback} minlen={this.state.l_min} maxlen={this.state.l_max}
+                    specialchr={this.state.spl_char} splarr={this.state.special_char_arr}
+                    />
                     
                     <div>
                     <FormLabel>Do you want to allow support for multiple languages?</FormLabel>
@@ -83,10 +102,10 @@ class Name extends React.Component{
                 
                
                 <Button  disabled={this.props.curStepIt===0} variant = "contained" label = "Previous" color = "primary"
-                 onClick = {(event)=>this.nextPageHandler(event,0)}>Previous</Button>
+                 onClick = {(event)=>this.prevPageHandler(event)}>Previous</Button>
                 
                 <Button style = {{marginLeft:"1rem"}} disabled={this.props.curStepIt=== this.props.totSteps-1} variant = "contained" label = "Next" color = "primary"
-                 onClick = {(event)=>this.nextPageHandler(event,1)}>Next</Button>
+                 onClick = {(event)=>this.nextPageHandler(event)}>Next</Button>
                 
             </Container>
            
