@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Box from "@material-ui/core/Box";
 import Tooltip from '@material-ui/core/Tooltip';
 import Divider from '@material-ui/core/Divider';
-
+import HelpIcon from '@material-ui/icons/Help';
 class Index extends React.Component{
     constructor()
     {
@@ -162,15 +162,23 @@ class Index extends React.Component{
             }) 
          return (
              <Container maxWidth ="md">
-                 <h2>Choose the attributes for the form </h2>
+                 <center><h1>ID Schema Wizard Generator</h1></center>
                  <Box borderColor="primary.main" 
                      borderTop={5} 
                      
                      >
-                    <div><br/></div>
+                         <div><h3>Choose the stock attributes you want to use for generating schema from below list. Also,
+                             you can add your own attributes by checking the below additional attributes option. </h3></div>
+                    
             <div style = {{display:"flex"}}>
                 <div style = {{display:"flex",flexDirection:"column"}}>
-                    <h3>Available Attributes</h3>
+                    <h3>Available Attributes
+                    <Tooltip title="These are the list of stock attributes available. Choose the attributes and click on arrow to add them into schema." 
+                    arrow>
+                       <HelpIcon></HelpIcon>  
+                    </Tooltip>
+                    </h3>
+                    
                     <Box border={2} borderColor="black">
                     <List style ={{width:"100%",maxHeight:"250px",overflow:"auto"}}>
                     
@@ -205,7 +213,11 @@ class Index extends React.Component{
                     
                 </div>
                 <div style = {{display:"flex",flexDirection:"column"}}>
-                    <h3>Selected Attributes</h3>
+                    <h3>Selected Attributes
+                    <Tooltip title="This list shows the attributes you have selected/added." arrow>
+                       <HelpIcon></HelpIcon>  
+                    </Tooltip>
+                    </h3>
                     <Box border={2} borderColor="black">
                     <List style = {{maxHeight:"250px",overflow:"auto"}}>
                         
@@ -221,9 +233,11 @@ class Index extends React.Component{
                 <div>
                     <TextField id = "attribute_name" label = "Attribute Name" variant = "outlined"
                      value = {this.state.attributeName} onChange = {(event)=>this.changeAttributeName(event)} />
+                    <Tooltip title="Click on Add button to add the  custom attribute to 'Selected Attributes' list" arrow>
                     <Button color = "primary" variant = "contained" value = "Add Attribute" style ={{margin:"1rem"}} onClick = {(event)=>this.addAttributeHandler(event)}>
                         Add
                     </Button>
+                    </Tooltip>
                     
                 </div>
             }
@@ -231,6 +245,7 @@ class Index extends React.Component{
             <div><br/></div>
             </Box>
           
+          <div><h3>Click on Next button to proceed with selected attributes:</h3></div>
             <div style ={{display:"block",width:"50%"}} >
                 <Button color ="primary"  variant = "contained" onClick = {(event)=>this.getNextPage(event)}>Next</Button>
             </div>

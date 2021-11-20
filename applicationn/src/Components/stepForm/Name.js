@@ -38,10 +38,10 @@ class Name extends React.Component{
         this.setState({[name]: childData});
     }
 
-      nextPageHandler = (event)=>{
+      nextPageHandler = (event,flag)=>{
         var obj = generateJSON_fullName(this.state);
         console.log(obj);
-        this.props.updateIterator();
+        this.props.updateIterator(flag);
       }
     render(){
       // console.log(JSON.stringify(this.state));
@@ -80,8 +80,14 @@ class Name extends React.Component{
                     </div>
                 </Box>
                 <div><br/></div>
-                <Button variant = "contained" label = "Next" color = "primary"
-                 onClick = {(event)=>this.nextPageHandler(event)}>Next</Button>
+                
+               
+                <Button  disabled={this.props.curStepIt===0} variant = "contained" label = "Previous" color = "primary"
+                 onClick = {(event)=>this.nextPageHandler(event,0)}>Previous</Button>
+                
+                <Button style = {{marginLeft:"1rem"}} disabled={this.props.curStepIt=== this.props.totSteps-1} variant = "contained" label = "Next" color = "primary"
+                 onClick = {(event)=>this.nextPageHandler(event,1)}>Next</Button>
+                
             </Container>
            
             
