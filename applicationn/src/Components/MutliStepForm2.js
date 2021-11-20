@@ -15,7 +15,9 @@ import Region from "./stepForm/Region"
 import Zone from "./stepForm/Zone"
 import {Review} from "./stepForm/Review"
 import Submit from "./stepForm/Submit"
-
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
 
 class MultiStepForm2 extends React.Component{
 constructor(props)
@@ -45,56 +47,207 @@ updateObject = (data) =>{
 
 render()
 {   
-//     this.setState({
-//         curr_id:this.state.steps[this.state.stepIterator][0]
-//     })
     let id = this.state.curr_id;
     if(this.state.stepIterator<this.state.steps.length)
    { 
     switch(id)
             {
                 case 1 :
-                     return <Name updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                     return (
+                     <div style = {{display:"flex",flexDirection:"row"}}>
+                         <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                         {this.state.steps.map((label) => (
+                              <Step key={label[1]}>
+                                   <StepLabel>{label[1]}</StepLabel>
+                              </Step>
+                         ))}
+                         </Stepper>
+                         <Name updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                         name = {this.state.steps[this.state.stepIterator][1]}/>
+                    </div>
+                     )
                 case 2 :
-                     return <DoB updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <DoB updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 3:
-                     return <Gender updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Gender updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 4:
-                     return <Address updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Address updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 5:
-                     return <Region updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Region updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 6 :
-                    return <Province updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                    name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Province updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 7:
-                     return <City updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <City updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 8:
-                     return <Zone updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Zone updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 9:
-                     return <PostalCode updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <PostalCode updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 10:
-                     return <Email updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Email updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 11:
-                     return <Phone updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <Phone updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 12:
-                     return <PoI updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <PoI updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 case 13:
-                     return <IndividualBiometrics updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                     name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <IndividualBiometrics updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
                 default:
-                     return <AdditionalAttribute updateIterator = {this.updateIterator} updateObject = {this.updateObject}
-                name = {this.state.steps[this.state.stepIterator][1]}/>
+                    return (
+                         <div style = {{display:"flex",flexDirection:"row"}}>
+                             <Stepper activeStep={this.state.stepIterator} orientation="vertical">
+                             {this.state.steps.map((label) => (
+                                  <Step key={label[1]}>
+                                       <StepLabel>{label[1]}</StepLabel>
+                                  </Step>
+                             ))}
+                             </Stepper>
+                             <AdditionalAttribute updateIterator = {this.updateIterator} updateObject = {this.updateObject}
+                             name = {this.state.steps[this.state.stepIterator][1]}/>
+                        </div>
+                         )
             }
     }
     else
